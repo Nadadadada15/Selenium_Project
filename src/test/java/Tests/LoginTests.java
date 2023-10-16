@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class LoginTests extends BasicTest {
 
     @Test(priority = 1, retryAnalyzer = RetryAnalyzer.class)
-    public void goToLoginPage() {
+    public void verifyLoginPageUrl() {
 
 
         navPage.clickOnLangBtn();
@@ -80,7 +80,7 @@ public class LoginTests extends BasicTest {
     }
 
     @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
-    public void logIn() {
+    public void verifylogInFunctionality() {
         String email = "admin@admin.com";
         String password = "12345";
 
@@ -100,8 +100,8 @@ public class LoginTests extends BasicTest {
                 .until(ExpectedConditions.urlContains("/home"));
     }
 
-    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
-    public void logOut() {
+    @Test(priority = 6, retryAnalyzer = RetryAnalyzer.class)
+    public void verifylogOutFunctionality() {
         String email = "admin@admin.com";
         String password = "12345";
 
@@ -110,10 +110,8 @@ public class LoginTests extends BasicTest {
                 .withMessage("User Should Be on Login page")
                 .until(ExpectedConditions.urlContains("/login"));
 
-
         logInPage.getEmailField().sendKeys(email);
         logInPage.getPasswordField().sendKeys(password);
-
         logInPage.clickOnLoginBtn();
 
         Assert.assertTrue(navPage.doesLogOutBtnExist());
@@ -123,7 +121,6 @@ public class LoginTests extends BasicTest {
         wait
                 .withMessage("User Should Be on Login page")
                 .until(ExpectedConditions.urlContains("/login"));
-
 
     }
 
