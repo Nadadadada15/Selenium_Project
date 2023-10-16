@@ -56,6 +56,11 @@ public class NavPage extends BasicPage {
         return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[4]"));
     }
 
+    public void clickOnSignUpBtn(){
+
+        getSignUpBtn().click();
+    }
+
     public WebElement getLogOutBtn() {
         return driver.findElement(By.cssSelector(".v-toolbar__items>button.btnLogout"));
 
