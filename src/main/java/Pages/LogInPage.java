@@ -15,13 +15,30 @@ public class LogInPage extends BasicPage {
     public WebElement getEmailField() {
         return driver.findElement(By.id("email"));
     }
+
+
     public WebElement getPasswordField() {
         return driver.findElement(By.id("password"));
 
     }
-
     public WebElement getLoginBtn(){
         return driver.findElement(By.xpath("//button[@type='submit']"));
     }
 
+    public void clickOnLoginBtn(){
+
+        getLoginBtn().click();
+    }
+
+
+    public WebElement getErrorMessagePopUp(){
+
+        return  driver.findElement(By.cssSelector(" div.v-snack__content > ul > li"));
+    }
+
+
+    public String getErrorMsgText(){
+
+        return getErrorMessagePopUp().getText();
+    }
 }
