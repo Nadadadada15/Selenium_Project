@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class NavPage extends BasicPage{
+public class NavPage extends BasicPage {
     public NavPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
@@ -18,17 +18,17 @@ public class NavPage extends BasicPage{
         return driver.findElement(By.cssSelector("button.btnLocaleActivation"));
     }
 
-    public void clickOnLangBtn(){
+    public void clickOnLangBtn() {
 
         getLangBtn().click();
     }
 
-    public WebElement getEngLangLink (){
+    public WebElement getEngLangLink() {
 
         return driver.findElement(By.cssSelector("div.v-menu__content>div>div:nth-child(1)"));
     }
 
-    public void clickOnEngLangLink(){
+    public void clickOnEngLangLink() {
 
         getEngLangLink().click();
     }
@@ -40,7 +40,7 @@ public class NavPage extends BasicPage{
         return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[3]"));
     }
 
-    public void clickOnLoginBtn(){
+    public void clickOnLoginBtn() {
 
         getLoginBtn().click();
     }
@@ -56,9 +56,20 @@ public class NavPage extends BasicPage{
         return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[4]"));
     }
 
+    public WebElement getLogOutBtn() {
+        return driver.findElement(By.cssSelector(".v-toolbar__items>button.btnLogout"));
 
+    }
 
+    public void clickOnLogOutBtn(){
 
+        getLogOutBtn().click();
+    }
+
+    public boolean doesLogOutBtnExist(){
+
+       return elementExists(By.cssSelector(".v-toolbar__items>button.btnLogout"));
+    }
 
 
 }

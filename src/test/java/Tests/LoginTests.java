@@ -99,4 +99,38 @@ public class LoginTests extends BasicTest {
                 .withMessage("Url should contain '/home' path ")
                 .until(ExpectedConditions.urlContains("/home"));
     }
+
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void logOut() {
+        String email = "admin@admin.com";
+        String password = "12345";
+
+        navPage.clickOnLoginBtn();
+        wait
+                .withMessage("User Should Be on Login page")
+                .until(ExpectedConditions.urlContains("/login"));
+
+
+        logInPage.getEmailField().sendKeys(email);
+        logInPage.getPasswordField().sendKeys(password);
+
+        logInPage.clickOnLoginBtn();
+
+        Assert.assertTrue(navPage.doesLogOutBtnExist());
+
+        navPage.clickOnLogOutBtn();
+
+        wait
+                .withMessage("User Should Be on Login page")
+                .until(ExpectedConditions.urlContains("/login"));
+
+
+    }
+
+
+
+
+
+
+
 }
