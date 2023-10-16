@@ -11,6 +11,9 @@ public class LoginTests extends BasicTest {
     @Test(priority = 1, retryAnalyzer = RetryAnalyzer.class)
     public void goToLoginPage() {
 
+
+        navPage.clickOnLangBtn();
+        navPage.clickOnEngLangLink();
         navPage.clickOnLoginBtn();
         wait
                 .withMessage("User Should Be on Login page")
@@ -18,6 +21,7 @@ public class LoginTests extends BasicTest {
 
 
     }
+
 
 
 }
