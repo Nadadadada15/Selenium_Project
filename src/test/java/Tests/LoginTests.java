@@ -22,6 +22,20 @@ public class LoginTests extends BasicTest {
 
     }
 
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void checkInputTypes() {
+        navPage.clickOnLoginBtn();
+        wait
+                .withMessage("User Should Be on Login page")
+                .until(ExpectedConditions.urlContains("/login"));
+
+        Assert.assertEquals("email", logInPage.getEmailField().getAttribute("type"), "Actual value should be 'email'");
+        Assert.assertEquals("password", logInPage.getPasswordField().getAttribute("type"), "Actual value should be 'password'");
+
+    }
+
+
+
 
 
 }
