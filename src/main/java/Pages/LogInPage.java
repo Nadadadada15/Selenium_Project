@@ -12,9 +12,16 @@ public class LogInPage extends BasicPage {
 
     //WebElements
 
+    public WebElement getEmailField() {
+        return driver.findElement(By.id("email"));
+    }
+    public WebElement getPasswordField() {
+        return driver.findElement(By.id("password"));
 
+    }
 
-
-
+    public WebElement getLoginBtn(){
+        return driver.findElement(By.xpath("//button[@type='submit']"));
+    }
 
 }

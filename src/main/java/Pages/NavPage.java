@@ -12,7 +12,30 @@ public class NavPage extends BasicPage{
 
 
     //WebElements
+    public WebElement getLangBtn() {
+        return driver.findElement(By.cssSelector("button.btnLocaleActivation"));
+    }
 
+    public WebElement getLoginBtn() {
+
+        return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[3]"));
+    }
+
+    public void clickOnLoginBtn(){
+
+        getLoginBtn().click();
+    }
+
+
+    public WebElement getAboutBtn() {
+
+        return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[2]"));
+    }
+
+    public WebElement getSignUpBtn() {
+
+        return driver.findElement(By.xpath("//*[@class='v-toolbar__items']/a[4]"));
+    }
 
 
 
