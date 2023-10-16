@@ -77,9 +77,26 @@ public class LoginTests extends BasicTest {
 
         Assert.assertEquals(messagePopUpPage.getErrorMsgText(), "Wrong password", "Error message 'Wrong password' should appear");
 
-
-
-
     }
 
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void logIn() {
+        String email = "admin@admin.com";
+        String password = "12345";
+
+        navPage.clickOnLoginBtn();
+        wait
+                .withMessage("User Should Be on Login page")
+                .until(ExpectedConditions.urlContains("/login"));
+
+
+        logInPage.getEmailField().sendKeys(email);
+        logInPage.getPasswordField().sendKeys(password);
+
+        logInPage.clickOnLoginBtn();
+
+        wait
+                .withMessage("Url should contain '/home' path ")
+                .until(ExpectedConditions.urlContains("/home"));
+    }
 }
