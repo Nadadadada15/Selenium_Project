@@ -51,13 +51,35 @@ public class LoginTests extends BasicTest {
 
         logInPage.clickOnLoginBtn();
 
-        Assert.assertEquals(logInPage.getErrorMsgText(), "User does not exists", "Error message 'User does not exists' should appear");
+        Assert.assertEquals(messagePopUpPage.getErrorMsgText(), "User does not exists", "Error message 'User does not exists' should appear");
 
 
 
 
     }
 
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyErrorMsgsForWrongPassword(){
+        String email = "admin@admin.com";
+        String invalidPassword = "password123";
 
+        navPage.clickOnLoginBtn();
+        wait
+                .withMessage("User Should Be on Login page")
+                .until(ExpectedConditions.urlContains("/login"));
+
+
+
+        logInPage.getEmailField().sendKeys(email);
+        logInPage.getPasswordField().sendKeys(invalidPassword);
+
+        logInPage.clickOnLoginBtn();
+
+        Assert.assertEquals(messagePopUpPage.getErrorMsgText(), "Wrong password", "Error message 'Wrong password' should appear");
+
+
+
+
+    }
 
 }
