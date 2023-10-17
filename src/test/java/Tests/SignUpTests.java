@@ -1,4 +1,5 @@
 package Tests;
+
 import Retry.RetryAnalyzer;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -33,6 +34,43 @@ public class SignUpTests extends BasicTest {
 
     }
 
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyUserAlreadyExistsPopUpMsg() {
+        String nameInputData = "Another User";
+        String emailInputData = "admin@admin.com";
+        String passwordInputData = "12345";
+        String confPasswordInputData = "12345";
+
+        navPage.clickOnSignUpBtn();
+        wait
+                .withMessage("User Should Be on SignUp page")
+                .until(ExpectedConditions.urlContains("/signup"));
+
+        signUpPage.clearNameInputField();
+        signUpPage.getNameInputField().sendKeys(nameInputData);
+
+
+        signUpPage.clearEmailInputField();
+        signUpPage.getEmailInputField().sendKeys(emailInputData);
+
+        signUpPage.clearPasswordInputField();
+        signUpPage.getPasswordInputField().sendKeys(passwordInputData);
+
+        signUpPage.clearConfPasswordInputField();
+        signUpPage.getConfPasswordInputField().sendKeys(confPasswordInputData);
+
+        signUpPage.clickOnSignUpBtn();
+        messagePopUpPage.waitUntilErrorMsgPopUpAppears();
+
+        Assert.assertEquals(messagePopUpPage.getErrorMsgText(), "E-mail already exists", "Error message 'E-mail already exists' should appear'");
+
+        wait
+                .withMessage("User Should Be on SignUp page")
+                .until(ExpectedConditions.urlContains("/signup"));
+
+
+
+    }
 
 
 }

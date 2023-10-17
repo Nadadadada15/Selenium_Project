@@ -22,7 +22,7 @@ public class MessagePopUpPage extends BasicPage{
 
     public WebElement getErrorMessagePopUp(){
 
-        return  driver.findElement(By.cssSelector(" div.v-snack__content > ul > li"));
+        return  driver.findElement(By.cssSelector("div.v-snack__content > ul > li"));
     }
 
 

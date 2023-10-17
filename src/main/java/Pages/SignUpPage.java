@@ -71,4 +71,13 @@ public class SignUpPage extends BasicPage {
         getSignUpBtn().click();
     }
 
+
+
+
+
+
+
+
+
+
 }
