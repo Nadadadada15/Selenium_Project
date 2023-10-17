@@ -6,32 +6,62 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MessagePopUpPage extends BasicPage{
+public class MessagePopUpPage extends BasicPage {
     public MessagePopUpPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
 
+    public void waitUntilErrorMsgPopUpAppears() {
 
-    public void waitUntilErrorMsgPopUpAppears(){
-
-        wait.withMessage("Pup up should be visible")
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.className("v-snack__wrapper"))));
+        wait.withMessage("Pup up should be visible").until(ExpectedConditions.visibilityOf(driver.findElement(By.className("v-snack__wrapper"))));
     }
 
 
-    public WebElement getErrorMessagePopUp(){
+    public WebElement getErrorMessagePopUp() {
 
-        return  driver.findElement(By.cssSelector("div.v-snack__content > ul > li"));
+        return driver.findElement(By.cssSelector("div.v-snack__content > ul > li"));
     }
 
 
-    public String getErrorMsgText(){
+    public String getErrorMsgText() {
 
         return getErrorMessagePopUp().getText();
     }
 
 
+    public WebElement getVerifyAccount() {
+        return driver.findElement(By.className("v-dialog"));
+    }
+
+    public void waitUntilVerifyAccountPopUpAppears() {
+
+        wait.withMessage("Verify account pop-up should be visible")
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.className("v-dialog"))));
+    }
+
+
+    public String getVerifyAccountPopUpText() {
+
+        return getVerifyAccount().getText();
+    }
+
+
+    public boolean isVerifyAccountPopUpTextCorrect() {
+
+        return getVerifyAccountPopUpText().equals(" IMPORTANT: Verify your account ");
+
+    }
+
+    public WebElement getCloseBtn(){
+
+        return driver.findElement(By.className("btnClose"));
+    }
+
+    public void clickOnCloseBtn(){
+
+        getCloseBtn().click();
+    }
 
 }
 

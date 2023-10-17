@@ -68,6 +68,50 @@ public class SignUpTests extends BasicTest {
                 .withMessage("User Should Be on SignUp page")
                 .until(ExpectedConditions.urlContains("/signup"));
 
+    }
+
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void verifySignUp() {
+        String nameInputData = "Nada Nikolic";
+        String emailInputData = "nada.nikoli@itbootcamp.rs";
+        String passwordInputData = "12345";
+        String confPasswordInputData = "12345";
+
+        navPage.clickOnSignUpBtn();
+        wait
+                .withMessage("User Should Be on SignUp page")
+                .until(ExpectedConditions.urlContains("/signup"));
+
+        signUpPage.clearNameInputField();
+        signUpPage.getNameInputField().sendKeys(nameInputData);
+
+
+        signUpPage.clearEmailInputField();
+        signUpPage.getEmailInputField().sendKeys(emailInputData);
+
+        signUpPage.clearPasswordInputField();
+        signUpPage.getPasswordInputField().sendKeys(passwordInputData);
+
+        signUpPage.clearConfPasswordInputField();
+        signUpPage.getConfPasswordInputField().sendKeys(confPasswordInputData);
+
+        signUpPage.clickOnSignUpBtn();
+
+        wait
+                .withMessage("User Should Be on SignUp page")
+                .until(ExpectedConditions.urlContains("/home"));
+
+        driver.navigate().refresh();
+
+        messagePopUpPage.waitUntilVerifyAccountPopUpAppears();
+        messagePopUpPage.isVerifyAccountPopUpTextCorrect();
+        messagePopUpPage.clickOnCloseBtn();
+
+        navPage.clickOnLogOutBtn();
+
+        wait
+                .withMessage("User Should Be on LogIn page")
+                .until(ExpectedConditions.urlContains("/login"));
 
 
     }
