@@ -1,5 +1,5 @@
 package Tests;
-
+import Retry.RetryAnalyzer;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.IRetryAnalyzer;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class SignUpTests extends BasicTest {
 
 
-    @Test(priority = 1, retryAnalyzer = IRetryAnalyzer.class)
+    @Test(priority = 1, retryAnalyzer = RetryAnalyzer.class)
     public void verifySignUpPageUrl() {
 
         navPage.clickOnSignUpBtn();
@@ -19,7 +19,7 @@ public class SignUpTests extends BasicTest {
 
     }
 
-    @Test (priority = 2,retryAnalyzer = IRetryAnalyzer.class)
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
     public void checkInputTypes() {
         navPage.clickOnSignUpBtn();
         wait

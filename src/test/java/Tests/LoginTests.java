@@ -50,6 +50,7 @@ public class LoginTests extends BasicTest {
         logInPage.getPasswordField().sendKeys(invalidPassword);
 
         logInPage.clickOnLoginBtn();
+        messagePopUpPage.waitUntilErrorMsgPopUpAppears();
 
         Assert.assertEquals(messagePopUpPage.getErrorMsgText(), "User does not exists", "Error message 'User does not exists' should appear");
 
@@ -74,6 +75,7 @@ public class LoginTests extends BasicTest {
         logInPage.getPasswordField().sendKeys(invalidPassword);
 
         logInPage.clickOnLoginBtn();
+        messagePopUpPage.waitUntilErrorMsgPopUpAppears();
 
         Assert.assertEquals(messagePopUpPage.getErrorMsgText(), "Wrong password", "Error message 'Wrong password' should appear");
 
@@ -98,6 +100,7 @@ public class LoginTests extends BasicTest {
         wait
                 .withMessage("Url should contain '/home' path ")
                 .until(ExpectedConditions.urlContains("/home"));
+
     }
 
     @Test(priority = 6, retryAnalyzer = RetryAnalyzer.class)
