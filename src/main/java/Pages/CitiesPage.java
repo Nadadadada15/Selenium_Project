@@ -36,11 +36,19 @@ public class CitiesPage extends BasicPage {
         return driver.findElement(By.className("dlgNewEditItem"));
     }
 
+
     public void waitUntilEditDialogueIsVisible() {
         wait.
                 until(ExpectedConditions.visibilityOf(getEditDialogue()));
 
     }
+
+    public WebElement getNameInputFiledFromNewItemDialogue(){
+        return driver.findElement(By.cssSelector("input#name"));
+
+    }
+
+
 
     public WebElement getSaveBtn() {
 
