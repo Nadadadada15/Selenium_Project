@@ -174,7 +174,43 @@ public class AdminCitiesTests extends BasicTest {
 
 
     }
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void verifySearchCityFunctionality() throws InterruptedException {
+        String adminEmailInputData = "admin@admin.com";
+        String passwordInputData = "12345";
+        String userCity="Nada's City";
 
+        navPage.clickOnLoginBtn();
+
+        logInPage.getEmailField().sendKeys(adminEmailInputData);
+        logInPage.getPasswordField().sendKeys(passwordInputData);
+
+        wait
+                .withMessage("User Should Be on Login page")
+                .until(ExpectedConditions.urlContains("/login"));
+
+        logInPage.clickOnLoginBtn();
+
+        wait
+                .withMessage("User Should Be on SignUp page")
+                .until(ExpectedConditions.urlContains("/home"));
+
+        navPage.clickOnAdminBtn();
+        navPage.clickOnCitiesDropdownOptin();
+
+        wait
+                .withMessage("User Should Be on Admin page")
+                .until(ExpectedConditions.urlContains("/admin/cities"));
+
+
+        citiesPage.getSearchInput().sendKeys(userCity);
+
+        citiesPage.waitUntilRowNumIsOne();
+
+       Assert.assertTrue(citiesPage.isNadasCityTableDataCorrect());
+
+
+    }
 
 
 }

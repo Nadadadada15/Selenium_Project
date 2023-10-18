@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CitiesPage extends BasicPage {
@@ -66,7 +67,8 @@ public class CitiesPage extends BasicPage {
 
 
     List<WebElement> deleteIcons = driver.findElements(By.id("delete"));
-    List<WebElement> tableRows = driver.findElements(By.cssSelector("tbody>tr"));
+    List<WebElement> tableRows = driver.findElements(By.cssSelector("tbody tr"));
+
 
     public Integer citiesRowNumber() {
         int counter = 0;
@@ -94,7 +96,39 @@ public class CitiesPage extends BasicPage {
     }
 
 
+    public String getNadasCityTableDataText() {
 
+        List<WebElement> searchedRows = driver.findElements(By.cssSelector("tbody tr"));
+        String cityNameData = null;
+
+        for (int i = 0; i < searchedRows.size(); i++) {
+
+            cityNameData = searchedRows.get(i).findElement(By.cssSelector(".text-left:nth-child(2)")).getText();
+
+        }
+        return cityNameData;
+
+    }
+
+    public boolean isNadasCityTableDataCorrect(){
+
+        return getNadasCityTableDataText().contains("Nada's City");
+    }
+
+    public void waitUntilRowNumIsOne(){
+
+        wait
+                .withMessage("Table rows should be one")
+                .until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("tbody tr .text-left:nth-child(2)"),1));
+    }
+
+
+    public void waitUntilSearchBarIsNotEmpty(){
+
+        wait
+                .withMessage("Search bar should not be empty")
+                .until(ExpectedConditions.textToBe(By.id("search"),"Nada's City"));
+    }
 
 
     //.v-dialog__content--active > div > div za new item pop up
