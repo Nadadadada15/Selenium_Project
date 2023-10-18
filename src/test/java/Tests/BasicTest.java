@@ -3,6 +3,7 @@ package Tests;
 import Helpers.helpers;
 import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -51,12 +52,15 @@ public abstract class BasicTest {
     }
 
 
-
     @AfterMethod
-    public void ifFails(ITestResult result) throws IOException {
+    public void afterMethod(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
             helpers.takeAScreenshot(driver, "Screenshots/failedSS " + result.getMethod().getMethodName() + ".jpg");
         }
+
+
+        driver.manage().deleteAllCookies();
+        ((JavascriptExecutor) driver).executeScript("window.localStorage.clear();");
     }
 
 
@@ -64,11 +68,6 @@ public abstract class BasicTest {
     public void afterClass() {
         driver.quit();
     }
-
-
-
-
-
 
 
 }
