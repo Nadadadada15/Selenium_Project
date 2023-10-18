@@ -77,4 +77,29 @@ public class NavPage extends BasicPage {
     }
 
 
+    public WebElement getAdminBtn() {
+
+        return driver.findElement(By.className("btnAdmin"));
+    }
+
+    public void clickOnAdminBtn() {
+
+        getAdminBtn().click();
+    }
+
+    public WebElement getDropDownAdminMenu(){
+
+        return driver.findElement(By.cssSelector("div.v-menu__content>div.v-list"));
+    }
+
+    public WebElement getCitiesDropdownOption(){
+
+        return getDropDownAdminMenu().findElement(By.cssSelector("div.v-menu__content>div.v-list>a:nth-child(1)"));
+    }
+
+    public void clickOnCitiesDropdownOptin(){
+
+        getCitiesDropdownOption().click();
+    }
+
 }
