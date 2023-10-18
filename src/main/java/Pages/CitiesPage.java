@@ -33,7 +33,7 @@ public class CitiesPage extends BasicPage {
 
     public WebElement getEditDialogue() {
 
-        return driver.findElement(By.className("dlgNewEditItem"));
+        return driver.findElement(By.className("dlgNewEditItem")); //.dlgNewEditItem
     }
 
 
@@ -43,16 +43,15 @@ public class CitiesPage extends BasicPage {
 
     }
 
-    public WebElement getNameInputFiledFromNewItemDialogue(){
+    public WebElement getNameInputFiledFromNewItemDialogue() {
         return driver.findElement(By.cssSelector("input#name"));
 
     }
 
-    public void clickOnNameInputFiledFromNewItemDialogue(){
+    public void clickOnNameInputFiledFromNewItemDialogue() {
 
         getNameInputFiledFromNewItemDialogue().click();
     }
-
 
 
     public WebElement getSaveBtn() {
@@ -66,13 +65,39 @@ public class CitiesPage extends BasicPage {
     }
 
 
-    List<WebElement> deleteIcons=driver.findElements(By.id("delete"));
-    List<WebElement>tableRows = driver.findElements(By.cssSelector("tbody>tr"));
+    List<WebElement> deleteIcons = driver.findElements(By.id("delete"));
+    List<WebElement> tableRows = driver.findElements(By.cssSelector("tbody>tr"));
+
+    public Integer citiesRowNumber() {
+        int counter = 0;
+        for (int i = 0; i < tableRows.size(); i++) {
+            counter++;
+        }
+        return counter;
+    }
+
+    public boolean verifyRowNumIsOne() {
+        if (citiesRowNumber() > 1 && citiesRowNumber() < 1) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public WebElement getEditBtn() {
+
+        return driver.findElement(By.id("edit"));
+    }
+
+    public void clickOnEditBtn() {
+        getEditBtn().click();
+    }
+
+
+
 
 
     //.v-dialog__content--active > div > div za new item pop up
-
-
 
 
 }
