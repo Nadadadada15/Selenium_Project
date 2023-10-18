@@ -73,7 +73,7 @@ public class SignUpTests extends BasicTest {
     @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
     public void verifySignUp() {
         String nameInputData = "Nada Nikolic";
-        String emailInputData = "nada.nikoli@itbootcamp.rs";
+        String emailInputData = "nada.a@itbootcamp.rs";
         String passwordInputData = "12345";
         String confPasswordInputData = "12345";
 
@@ -104,7 +104,7 @@ public class SignUpTests extends BasicTest {
         driver.navigate().refresh();
 
         messagePopUpPage.waitUntilVerifyAccountPopUpAppears();
-        messagePopUpPage.isVerifyAccountPopUpTextCorrect();
+        Assert.assertTrue(messagePopUpPage.isVerifyAccountPopUpTextCorrect());
         messagePopUpPage.clickOnCloseBtn();
 
         navPage.clickOnLogOutBtn();
