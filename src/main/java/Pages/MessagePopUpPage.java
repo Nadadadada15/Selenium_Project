@@ -31,13 +31,13 @@ public class MessagePopUpPage extends BasicPage {
 
 
     public WebElement getVerifyAccount() {
-        return driver.findElement(By.className("v-dialog"));
+        return driver.findElement(By.cssSelector(".v-card>div.v-card__title"));
     }
 
     public void waitUntilVerifyAccountPopUpAppears() {
 
         wait.withMessage("Verify account pop-up should be visible")
-                .until(ExpectedConditions.visibilityOf(driver.findElement(By.className("v-dialog"))));
+                .until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(".v-card>div.v-card__title"))));
     }
 
 
@@ -49,7 +49,7 @@ public class MessagePopUpPage extends BasicPage {
 
     public boolean isVerifyAccountPopUpTextCorrect() {
 
-        return getVerifyAccountPopUpText().equals(" IMPORTANT: Verify your account ");
+        return getVerifyAccountPopUpText().equals("IMPORTANT: Verify your account");
 
     }
 
