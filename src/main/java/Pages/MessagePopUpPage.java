@@ -53,15 +53,35 @@ public class MessagePopUpPage extends BasicPage {
 
     }
 
-    public WebElement getCloseBtn(){
+    public WebElement getCloseBtn() {
 
         return driver.findElement(By.className("btnClose"));
     }
 
-    public void clickOnCloseBtn(){
+    public void clickOnCloseBtn() {
 
         getCloseBtn().click();
     }
+
+    public WebElement getNewCityAddedPopUp() {
+
+        return driver.findElement(By.cssSelector(".v-sheet.success>div"));
+    }
+
+    public void waitUntilNewCityAddedPopUpIsVisible() {
+        wait
+                .withMessage("New City Added Message PopUp should be visible")
+                .until(ExpectedConditions.visibilityOf(driver.
+                        findElement(By.cssSelector(".v-sheet.success>div"))));
+
+    }
+
+    public String getNewCityAddedPopUpText(){
+
+        return getNewCityAddedPopUp().getText();
+
+    }
+
 
 }
 

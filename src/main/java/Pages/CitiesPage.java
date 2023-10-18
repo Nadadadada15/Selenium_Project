@@ -48,6 +48,11 @@ public class CitiesPage extends BasicPage {
 
     }
 
+    public void clickOnNameInputFiledFromNewItemDialogue(){
+
+        getNameInputFiledFromNewItemDialogue().click();
+    }
+
 
 
     public WebElement getSaveBtn() {
@@ -65,8 +70,9 @@ public class CitiesPage extends BasicPage {
     List<WebElement>tableRows = driver.findElements(By.cssSelector("tbody>tr"));
 
 
-
-
     //.v-dialog__content--active > div > div za new item pop up
+
+
+
 
 }

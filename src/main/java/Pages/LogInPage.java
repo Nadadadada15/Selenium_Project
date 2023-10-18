@@ -30,5 +30,6 @@ public class LogInPage extends BasicPage {
 
         getLoginBtn().click();
     }
+
 }
 
