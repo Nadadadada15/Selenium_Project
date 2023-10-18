@@ -95,8 +95,6 @@ public class LoginTests extends BasicTest {
         logInPage.getEmailField().sendKeys(email);
         logInPage.getPasswordField().sendKeys(password);
 
-        logInPage.clickOnLoginBtn();
-
         wait
                 .withMessage("Url should contain '/home' path ")
                 .until(ExpectedConditions.urlContains("/home"));
