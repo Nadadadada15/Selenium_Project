@@ -107,8 +107,18 @@ public class CitiesPage extends BasicPage {
 
         }
         return cityNameData;
+    }
+//additinaly added not used method
+
+  /* public WebElement getOneCellTableData(int row, int column) {
+        return driver.findElement(By
+                .cssSelector(".v-data-table__wrapper tbody tr:nth-child(" + row + ") td:nth-child(" + column + ")"));
+    }
+    public String getOneCellTableDataText(int row, int column) {
+        return getOneCellTableData(row, column).getText();
 
     }
+  */
 
     public boolean isNadasCityTableDataCorrect(){
 
@@ -122,16 +132,51 @@ public class CitiesPage extends BasicPage {
                 .until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("tbody tr .text-left:nth-child(2)"),1));
     }
 
+    
+    public WebElement getNadasCityDeleteBtn(){
+        List<WebElement> searchedRows = driver.findElements(By.cssSelector("tbody tr"));
+        WebElement deleteBtn = null;
 
-    public void waitUntilSearchBarIsNotEmpty(){
+        for (int i = 0; i < searchedRows.size(); i++) {
+            
+          deleteBtn =searchedRows.get(i).findElement(By.id("delete"));
+            
+        }
+        return deleteBtn;
+        
+    }
 
-        wait
-                .withMessage("Search bar should not be empty")
-                .until(ExpectedConditions.textToBe(By.id("search"),"Nada's City"));
+    public void clickOnNadasCityDeleteBtn(){
+
+        getNadasCityDeleteBtn().click();
+    }
+
+    public WebElement getDeleteItemPopUp(){
+
+        return driver.findElement(By.cssSelector(".v-dialog__content--active > div"));
     }
 
 
-    //.v-dialog__content--active > div > div za new item pop up
+    public void waitUntilDeleteItemPopUpIsVisible(){
+
+
+        wait
+                .withMessage("Delete item Warning pop up should be visible")
+                .until(ExpectedConditions.visibilityOf(getDeleteItemPopUp()));
+    }
+
+    public WebElement getItemPopUpDeleteBtn() {
+
+        return driver.findElement(By.cssSelector("button.v-btn.v-btn--text.red--text"));
+    }
+
+    public void clickOnItemPopUpDeleteBtn (){
+
+        getItemPopUpDeleteBtn().click();
+    }
+
+
+
 
 
 }

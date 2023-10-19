@@ -48,7 +48,7 @@ public class AdminCitiesTests extends BasicTest {
 
 
     @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
-    public void  verifyCityInputTypeFromCreateEditPopUp(){
+    public void verifyCityInputTypeFromCreateEditPopUp() {
         String adminEmailInputData = "admin@admin.com";
         String passwordInputData = "12345";
 
@@ -78,7 +78,7 @@ public class AdminCitiesTests extends BasicTest {
         citiesPage.clickOnNewItem();
         citiesPage.waitUntilEditDialogueIsVisible();
 
-        Assert.assertEquals(citiesPage.getNameInputFiledFromNewItemDialogue().getAttribute("type"),"text");
+        Assert.assertEquals(citiesPage.getNameInputFiledFromNewItemDialogue().getAttribute("type"), "text");
 
     }
 
@@ -87,7 +87,7 @@ public class AdminCitiesTests extends BasicTest {
 
         String adminEmailInputData = "admin@admin.com";
         String passwordInputData = "12345";
-        String userCity="Nada's City";
+        String userCity = "Nada's City";
 
         navPage.clickOnLoginBtn();
 
@@ -121,18 +121,18 @@ public class AdminCitiesTests extends BasicTest {
         messagePopUpPage.waitUntilNewCityAddedPopUpIsVisible();
 
 
-
-        Assert.assertEquals(messagePopUpPage.getNewCityAddedPopUpText().substring(0,18)
-                ,"Saved successfully","Message PopUp should be 'Saved Successfully'");
+        Assert.assertEquals(messagePopUpPage.getNewCityAddedPopUpText().substring(0, 18)
+                , "Saved successfully", "Message PopUp should be 'Saved Successfully'");
 
 
     }
+
     @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
     public void VerifyEditNewCityFunctionality() throws InterruptedException {
         String adminEmailInputData = "admin@admin.com";
         String passwordInputData = "12345";
-        String userCity="Nada's City";
-        String userCityEdited= " Nada's City Edited";
+        String userCity = "Nada's City";
+        String userCityEdited = " Nada's City Edited";
         navPage.clickOnLoginBtn();
 
         logInPage.getEmailField().sendKeys(adminEmailInputData);
@@ -164,21 +164,22 @@ public class AdminCitiesTests extends BasicTest {
         wait
                 .withMessage("Edit Dialogue should appear")
                 .until(ExpectedConditions.visibilityOf(citiesPage.getEditDialogue()));
-        citiesPage.getNameInputFiledFromNewItemDialogue().sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+        citiesPage.getNameInputFiledFromNewItemDialogue().sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 
         citiesPage.getNameInputFiledFromNewItemDialogue().sendKeys(userCityEdited);
         citiesPage.clickOnSaveBtn();
         messagePopUpPage.waitUntilNewCityAddedPopUpIsVisible();
-        Assert.assertEquals(messagePopUpPage.getNewCityAddedPopUpText().substring(0,18)
-                ,"Saved successfully","Message PopUp should be 'Saved Successfully'");
+        Assert.assertEquals(messagePopUpPage.getNewCityAddedPopUpText().substring(0, 18)
+                , "Saved successfully", "Message PopUp should be 'Saved Successfully'");
 
 
     }
+
     @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
     public void verifySearchCityFunctionality() throws InterruptedException {
         String adminEmailInputData = "admin@admin.com";
         String passwordInputData = "12345";
-        String userCity="Nada's City";
+        String userCity = "Nada's City";
 
         navPage.clickOnLoginBtn();
 
@@ -207,7 +208,57 @@ public class AdminCitiesTests extends BasicTest {
 
         citiesPage.waitUntilRowNumIsOne();
 
-       Assert.assertTrue(citiesPage.isNadasCityTableDataCorrect());
+        Assert.assertTrue(citiesPage.isNadasCityTableDataCorrect());
+
+    }
+
+    @Test(priority = 6)
+    public void verifyDeleteFunctionality() throws InterruptedException {
+        String adminEmailInputData = "admin@admin.com";
+        String passwordInputData = "12345";
+        String userCity = "Nada's City";
+
+        navPage.clickOnLoginBtn();
+
+        logInPage.getEmailField().sendKeys(adminEmailInputData);
+        logInPage.getPasswordField().sendKeys(passwordInputData);
+
+        wait
+                .withMessage("User Should Be on Login page")
+                .until(ExpectedConditions.urlContains("/login"));
+
+        logInPage.clickOnLoginBtn();
+
+        wait
+                .withMessage("User Should Be on SignUp page")
+                .until(ExpectedConditions.urlContains("/home"));
+
+        navPage.clickOnAdminBtn();
+        navPage.clickOnCitiesDropdownOptin();
+
+        wait
+                .withMessage("User Should Be on Admin page")
+                .until(ExpectedConditions.urlContains("/admin/cities"));
+
+
+        citiesPage.getSearchInput().sendKeys(userCity);
+
+        citiesPage.waitUntilRowNumIsOne();
+
+        Assert.assertTrue(citiesPage.isNadasCityTableDataCorrect());
+
+        citiesPage.clickOnNadasCityDeleteBtn();
+
+
+        citiesPage.waitUntilDeleteItemPopUpIsVisible();
+        citiesPage.clickOnItemPopUpDeleteBtn();
+        Thread.sleep(2000);
+
+        messagePopUpPage.waitForSuccessfullyDeletedPopUpMsg();
+
+       // Assert.assertEquals(messagePopUpPage.getSuccessfullyDeletedPopUpMsgText(), " Deleted successfully ".substring(0, 20), "Message should be 'Deleted Successfully'");
+
+        Assert.assertTrue(messagePopUpPage.getSuccessfullyDeletedPopUpMsgText().contains("Deleted successfully"),"Message should be 'Deleted Successfully'");
 
 
     }

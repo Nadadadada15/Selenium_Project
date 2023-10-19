@@ -76,12 +76,32 @@ public class MessagePopUpPage extends BasicPage {
 
     }
 
-    public String getNewCityAddedPopUpText(){
+    public String getNewCityAddedPopUpText() {
 
         return getNewCityAddedPopUp().getText();
 
     }
 
+    public WebElement getSuccessfullyDeletedPopUpMsg() {
+
+        return driver.findElement(By.className("success"));
+    }
+
+    /*public void waitUntilSuccessfullyDeletedPopUpMsgAppears() {
+        wait
+                .withMessage("Successfully deleted PopUp message is visible")
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='v-btn__content'][contains(text(), 'Delete')]")));
+    }
+*/
+
+    public void waitForSuccessfullyDeletedPopUpMsg(){
+        wait.until(ExpectedConditions.
+                visibilityOfElementLocated(By.className("success")));
+    }
+    public String getSuccessfullyDeletedPopUpMsgText() {
+
+        return getSuccessfullyDeletedPopUpMsg().getText();
+    }
 
 }
 
