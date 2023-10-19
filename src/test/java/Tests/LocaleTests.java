@@ -35,6 +35,13 @@ public class LocaleTests extends BasicTest{
         navPage.waitUntiltextIsInChi();
     }
 
+    @Test(priority = 5, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyUKRLanguageChange()  {
+        navPage.clickOnLangBtn();
+        navPage.clickOnUkrLangLink();
+        navPage.waitUntiltextIsInUkr();
+    }
+
 
 
 
