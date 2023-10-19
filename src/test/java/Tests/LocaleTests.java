@@ -28,6 +28,13 @@ public class LocaleTests extends BasicTest{
         navPage.waitUntiltextIsInFra();
     }
 
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyCHLanguageChange()  {
+        navPage.clickOnLangBtn();
+        navPage.clickOnChiLangLink();
+        navPage.waitUntiltextIsInChi();
+    }
+
 
 
 
