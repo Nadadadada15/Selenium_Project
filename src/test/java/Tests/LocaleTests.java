@@ -21,6 +21,13 @@ public class LocaleTests extends BasicTest{
     }
 
 
+    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyFRLanguageChange()  {
+        navPage.clickOnLangBtn();
+        navPage.clickOnFraLangLink();
+        navPage.waitUntiltextIsInFra();
+    }
+
 
 
 
