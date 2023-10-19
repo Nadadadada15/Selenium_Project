@@ -33,7 +33,7 @@ public class AuthRoutesTests extends BasicTest{
 
     }
 
-    @Test(priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 4, retryAnalyzer = RetryAnalyzer.class)
     public void forbidsVisitsToAdminUsersUrlIfNotAuthenticated(){
 
         driver.navigate().to(baseUrl + "/admin/users");
