@@ -1,10 +1,10 @@
 # Selenium_Project
-
-This README provides a thorough description of an automated testing project using Selenium and TestNG. 
+```diff
+This README provides a thorough description of an automated testing project using Selenium and TestNG.
 Selenium is a popular open-source framework for automating web applications, and TestNG is a testing framework 
 designed to simplify test management and parallel test execution. 
 This project aims to demonstrate creatation and execution of automated UI tests for web applications using POM.
-
+```
 
 # Here's a description of the project structure:
 
