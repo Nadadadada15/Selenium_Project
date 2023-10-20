@@ -26,7 +26,6 @@ Each page object class represents a specific web page or component and encapsula
 
 
 ### Tests: This directory contains all test classes, organized by page's features. Each test class contains test methods related to a specific feature or functionality.<br>
-<br>
 
 AdminCitiesTests.java: Test class for testing admin-related functionalities related to cities.<br>
 AuthRoutesTests.java: Test class for testing authentication routes.<br>
