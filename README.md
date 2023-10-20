@@ -8,41 +8,40 @@ This project aims to demonstrate creatation and execution of automated UI tests 
 
 # Here's a description of the project structure:
 
-pom.xml: This Maven project file defines project dependencies, plugins, and build configurations.
+Make sure following dependencies are installed and put into pom.xml:<br>
+<br>
+Java Development Kit (JDK)<br>
+Maven<br>
+TestNG<br>
+WebDriver compatible with your preferred browser (Chrome, Firefox, etc.)<br>
 
-We used:
-Java Development Kit (JDK)
-Maven
-TestNG
-WebDriver compatible with your preferred browser (Chrome, Firefox, etc.)
+### Pages: This directory contains page object classes for different web pages. <br>
+Each page object class represents a specific web page or component and encapsulates the interactions and locators related to that page.<br>
 
-
-Pages: This directory contains page object classes for different web pages. 
-Each page object class represents a specific web page or component and encapsulates the interactions and locators related to that page.
-
--CitiesPage.java
--NavPage.java
--LoginPage.java
--SignUpPage.java
--MessagesPopUpPage.java
+-CitiesPage.java<br>
+-NavPage.java<br>
+-LoginPage.java<br>
+-SignUpPage.java<br>
+-MessagesPopUpPage.java<br>
 
 
-Tests: This directory contains all test classes, organized by page's features. Each test class contains test methods related to a specific feature or functionality.
+### Tests: This directory contains all test classes, organized by page's features. Each test class contains test methods related to a specific feature or functionality.<br>
+<br>
 
-AdminCitiesTests.java: Test class for testing admin-related functionalities related to cities.
-AuthRoutesTests.java: Test class for testing authentication routes.
-LocaleTests.java: Test class for testing localization and locale-related functionality.
-LoginTests.java: Test class for login-related test cases.
-SignUpTests.java: Test class for sign-up-related test cases.
+AdminCitiesTests.java: Test class for testing admin-related functionalities related to cities.<br>
+AuthRoutesTests.java: Test class for testing authentication routes.<br>
+LocaleTests.java: Test class for testing localization and locale-related functionality.<br>
+LoginTests.java: Test class for login-related test cases.<br>
+SignUpTests.java: Test class for sign-up-related test cases.<br>
 
 
 
-This project also incorporates "help" logic in the form of specific classes and methods.
+### Helpers: This project also incorporates "help" logic in the form of specific classes and methods.
 
-BasicTests.java: Test class that includes common test setup and teardown logic.
-BasicPageTests.java: Basic test class that focuses on generic page interactions that are not feature-specific.
-RetryAnalyzer.java: Class  which will automatically retry the failed test.
-helper.java: Class which will automatically generate screenshots for the faild tests.
+BasicTests.java: Test class that includes common test setup and teardown logic.<br>
+BasicPageTests.java: Basic test class that focuses on generic page interactions that are not feature-specific.<br>
+RetryAnalyzer.java: Class  which will automatically retry the failed test.<br>
+helper.java: Class which will automatically generate screenshots for the faild tests.<br>
 
 
 
